@@ -27,7 +27,7 @@ class Note(QMainWindow, Ui_MainWindow):
         self.fileSave.triggered.connect(self.saves)
         self.fileSaveAs.triggered.connect(self.savesAs)
         self.setFileFont.triggered.connect(self.setFont)
-        self.wrapp.triggered.connect(self.savesAs)
+        self.wrapp.triggered.connect(self.wrapMode)
         self.NotePlace.textChanged.connect(self.textModif)
         self.NotePlace.wordWrapMode()
         self.fn = None
