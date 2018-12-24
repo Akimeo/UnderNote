@@ -1,0 +1,7 @@
+{
+	"name": "Имя теста",
+	"pos" : 
+	[{"name": "Вопрос", "type": "Radio", "data": ["a"], "right answer": "123"},
+	{"name": "Вопрос", "type": "Check", "data": ["a"], "right answer": "2-4"},
+	{"name": "Вопрос", "type": "Line", "data": "", "right answer": "abc"}]
+}
