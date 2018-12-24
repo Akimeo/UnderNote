@@ -5,13 +5,15 @@ from PyQt5.QtGui import QIcon
 from redactor import Ui_MainWindow
 
 
-class Note(QMainWindow, Ui_MainWindow):
+windows = []
+
+
+class UnderNote(QMainWindow, Ui_MainWindow):
 
     def __init__(self):
         super().__init__()
         self.setupUi(self)
         self.wt = ' - UnderNote'
-        self.wrapped = True
         self.main()
 
     def main(self):
@@ -28,17 +30,22 @@ class Note(QMainWindow, Ui_MainWindow):
         self.fileSaveAs.triggered.connect(self.savesAs)
         self.setFileFont.triggered.connect(self.setFont)
         self.wrapp.triggered.connect(self.wrapMode)
+        self.newWindowAct.triggered.connect(self.newWindow)
         self.NotePlace.textChanged.connect(self.textModif)
         self.NotePlace.wordWrapMode()
         self.fn = None
 
     def wrapMode(self):
-        if self.wrapped:
-            self.NotePlace.setLineWrapMode(QtWidgets.QPlainTextEdit.NoWrap)
-            self.wrapped = False
+        if self.wrapp.isChecked():
+            self.NotePlace.setLineWrapMode(1)
         else:
-            self.NotePlace.setLineWrapMode(QtWidgets.QPlainTextEdit.NoWrap)
-            self.wrapped = True
+            self.NotePlace.setLineWrapMode(0)
+
+    def newWindow(self):
+        global windows
+
+        windows.append(UnderNote())
+        windows[-1].show()
 
     def opens(self):
         fileName = QFD.getOpenFileName(self, "Открыть файл", "", self.exn)[0]
@@ -81,7 +88,7 @@ class Note(QMainWindow, Ui_MainWindow):
 
 
 app = QApplication(sys.argv)
-ex = Note()
+ex = UnderNote()
 ex.show()
 try:
     sys.exit(app.exec())
