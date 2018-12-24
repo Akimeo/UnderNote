@@ -8,6 +8,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -34,8 +35,8 @@ class Ui_MainWindow(object):
         self.NotePlace.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
         self.NotePlace.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
         self.NotePlace.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustToContentsOnFirstShow)
-        self.NotePlace.setPlainText("")
-        self.NotePlace.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByKeyboard|QtCore.Qt.LinksAccessibleByMouse|QtCore.Qt.TextBrowserInteraction|QtCore.Qt.TextEditable|QtCore.Qt.TextEditorInteraction|QtCore.Qt.TextSelectableByKeyboard|QtCore.Qt.TextSelectableByMouse)
+        self.NotePlace.setLineWrapMode(QtWidgets.QPlainTextEdit.NoWrap)
+        self.NotePlace.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByKeyboard | QtCore.Qt.LinksAccessibleByMouse | QtCore.Qt.TextBrowserInteraction | QtCore.Qt.TextEditable | QtCore.Qt.TextEditorInteraction | QtCore.Qt.TextSelectableByKeyboard | QtCore.Qt.TextSelectableByMouse)
         self.NotePlace.setObjectName("NotePlace")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
@@ -55,10 +56,14 @@ class Ui_MainWindow(object):
         self.fileSaveAs.setObjectName("fileSaveAs")
         self.setFileFont = QtWidgets.QAction(MainWindow)
         self.setFileFont.setObjectName("setFileFont")
+        self.wrapp = QtWidgets.QAction(MainWindow)
+        self.wrapp.setCheckable(True)
+        self.wrapp.setObjectName("wrapp")
         self.menu.addAction(self.fileOpen)
         self.menu.addSeparator()
         self.menu.addAction(self.fileSave)
         self.menu.addAction(self.fileSaveAs)
+        self.menu_3.addAction(self.wrapp)
         self.menu_3.addAction(self.setFileFont)
         self.menubar.addAction(self.menu.menuAction())
         self.menubar.addAction(self.menu_3.menuAction())
@@ -82,4 +87,5 @@ class Ui_MainWindow(object):
         self.fileSaveAs.setShortcut(_translate("MainWindow", "Ctrl+Shift+S"))
         self.setFileFont.setText(_translate("MainWindow", "Сменить шрифт"))
         self.setFileFont.setShortcut(_translate("MainWindow", "Ctrl+Shift+F"))
+        self.wrapp.setText(_translate("MainWindow", "Перенос по словам"))
 
