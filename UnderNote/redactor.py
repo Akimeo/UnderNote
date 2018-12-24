@@ -8,13 +8,12 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 620)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("note.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("../../[18] Проект QT. QtDesigner, pyuic, два способа подключения uic-файла/[2] Домашняя работа/Простой текстовый редактор/note.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setIconSize(QtCore.QSize(256, 128))
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -24,7 +23,7 @@ class Ui_MainWindow(object):
         self.centralwidget.setFont(font)
         self.centralwidget.setObjectName("centralwidget")
         self.NotePlace = QtWidgets.QPlainTextEdit(self.centralwidget)
-        self.NotePlace.setGeometry(QtCore.QRect(0, 0, 800, 600))
+        self.NotePlace.setGeometry(QtCore.QRect(0, -10, 800, 600))
         self.NotePlace.setMinimumSize(QtCore.QSize(80, 60))
         font = QtGui.QFont()
         font.setFamily("Calibri")
@@ -36,7 +35,8 @@ class Ui_MainWindow(object):
         self.NotePlace.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
         self.NotePlace.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustToContentsOnFirstShow)
         self.NotePlace.setLineWrapMode(QtWidgets.QPlainTextEdit.NoWrap)
-        self.NotePlace.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByKeyboard | QtCore.Qt.LinksAccessibleByMouse | QtCore.Qt.TextBrowserInteraction | QtCore.Qt.TextEditable | QtCore.Qt.TextEditorInteraction | QtCore.Qt.TextSelectableByKeyboard | QtCore.Qt.TextSelectableByMouse)
+        self.NotePlace.setPlainText("")
+        self.NotePlace.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByKeyboard|QtCore.Qt.LinksAccessibleByMouse|QtCore.Qt.TextBrowserInteraction|QtCore.Qt.TextEditable|QtCore.Qt.TextEditorInteraction|QtCore.Qt.TextSelectableByKeyboard|QtCore.Qt.TextSelectableByMouse)
         self.NotePlace.setObjectName("NotePlace")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
@@ -59,7 +59,10 @@ class Ui_MainWindow(object):
         self.wrapp = QtWidgets.QAction(MainWindow)
         self.wrapp.setCheckable(True)
         self.wrapp.setObjectName("wrapp")
+        self.newWindowAct = QtWidgets.QAction(MainWindow)
+        self.newWindowAct.setObjectName("newWindowAct")
         self.menu.addAction(self.fileOpen)
+        self.menu.addAction(self.newWindowAct)
         self.menu.addSeparator()
         self.menu.addAction(self.fileSave)
         self.menu.addAction(self.fileSaveAs)
@@ -88,4 +91,6 @@ class Ui_MainWindow(object):
         self.setFileFont.setText(_translate("MainWindow", "Сменить шрифт"))
         self.setFileFont.setShortcut(_translate("MainWindow", "Ctrl+Shift+F"))
         self.wrapp.setText(_translate("MainWindow", "Перенос по словам"))
+        self.newWindowAct.setText(_translate("MainWindow", "Новое окно"))
+        self.newWindowAct.setShortcut(_translate("MainWindow", "Ctrl+Shift+N"))
 
