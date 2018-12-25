@@ -7,15 +7,15 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>620</height>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>PyQt5 блокнот</string>
+   <string>UnderNote</string>
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>note.png</normaloff>note.png</iconset>
+    <normaloff>C:/Users/MrTrollhack/[18] Проект QT. QtDesigner, pyuic, два способа подключения uic-файла/[2] Домашняя работа/Простой текстовый редактор/note.png</normaloff>C:/Users/MrTrollhack/[18] Проект QT. QtDesigner, pyuic, два способа подключения uic-файла/[2] Домашняя работа/Простой текстовый редактор/note.png</iconset>
   </property>
   <property name="iconSize">
    <size>
@@ -33,10 +33,10 @@
    <widget class="QPlainTextEdit" name="NotePlace">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>800</width>
-      <height>600</height>
+      <x>-10</x>
+      <y>-10</y>
+      <width>851</width>
+      <height>631</height>
      </rect>
     </property>
     <property name="minimumSize">
@@ -61,7 +61,7 @@
      <enum>Qt::ScrollBarAlwaysOn</enum>
     </property>
     <property name="horizontalScrollBarPolicy">
-     <enum>Qt::ScrollBarAlwaysOn</enum>
+     <enum>Qt::ScrollBarAsNeeded</enum>
     </property>
     <property name="sizeAdjustPolicy">
      <enum>QAbstractScrollArea::AdjustToContentsOnFirstShow</enum>
@@ -70,8 +70,7 @@
      <enum>QPlainTextEdit::NoWrap</enum>
     </property>
     <property name="plainText">
-     <string>ergergrergrergregergegegregegegegrergegrergregergegegregegegegrergegrergregergegegregegegegrergegrergregergegegregegegegrergegrergregergegegregegegegrerge
-</string>
+     <string/>
     </property>
     <property name="textInteractionFlags">
      <set>Qt::LinksAccessibleByKeyboard|Qt::LinksAccessibleByMouse|Qt::TextBrowserInteraction|Qt::TextEditable|Qt::TextEditorInteraction|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -91,20 +90,46 @@
     <property name="title">
      <string>Файл</string>
     </property>
+    <widget class="QMenu" name="menu_2">
+     <property name="title">
+      <string>Печать</string>
+     </property>
+     <addaction name="printAct"/>
+     <addaction name="prevAct"/>
+    </widget>
     <addaction name="fileOpen"/>
+    <addaction name="newWindowAct"/>
     <addaction name="separator"/>
     <addaction name="fileSave"/>
     <addaction name="fileSaveAs"/>
+    <addaction name="menu_2"/>
+    <addaction name="separator"/>
+    <addaction name="exitact"/>
    </widget>
    <widget class="QMenu" name="menu_3">
     <property name="title">
      <string>Формат</string>
     </property>
+    <widget class="QMenu" name="menu_5">
+     <property name="title">
+      <string>Сменить цвет</string>
+     </property>
+     <addaction name="textColour"/>
+     <addaction name="backgroudColour"/>
+    </widget>
     <addaction name="wrapp"/>
     <addaction name="setFileFont"/>
+    <addaction name="menu_5"/>
+   </widget>
+   <widget class="QMenu" name="menu_4">
+    <property name="title">
+     <string>Справка</string>
+    </property>
+    <addaction name="abouAct"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_3"/>
+   <addaction name="menu_4"/>
   </widget>
   <action name="fileOpen">
    <property name="text">
@@ -156,6 +181,50 @@
    </property>
    <property name="text">
     <string>Перенос по словам</string>
+   </property>
+  </action>
+  <action name="newWindowAct">
+   <property name="text">
+    <string>Новое окно</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+N</string>
+   </property>
+  </action>
+  <action name="printAct">
+   <property name="text">
+    <string>Печать</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
+  </action>
+  <action name="prevAct">
+   <property name="text">
+    <string>Превью</string>
+   </property>
+  </action>
+  <action name="abouAct">
+   <property name="text">
+    <string>О программе</string>
+   </property>
+  </action>
+  <action name="exitact">
+   <property name="text">
+    <string>Выход</string>
+   </property>
+  </action>
+  <action name="textColour">
+   <property name="text">
+    <string>Цвет текста</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+C</string>
+   </property>
+  </action>
+  <action name="backgroudColour">
+   <property name="text">
+    <string>Цвет фона</string>
    </property>
   </action>
  </widget>
