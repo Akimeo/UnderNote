@@ -96,10 +96,12 @@ class UnderNote(QMainWindow, MainWind_1):
         fileName = QFD.getOpenFileName(self, "Открыть файл", "", self.exn)[0]
         if fileName:
             self.fn = fileName
-            self.opd = open(fileName, 'r+')
-            self.text = self.opd.read()
             if fileName.split('.')[-1] == 'UT':
-                self.text = crypt(self.text)
+                self.opd = open(fileName, 'r+', encoding = 'UTF-16')
+                self.text = crypt(self.opd.read())
+            else:
+                self.opd = open(fileName, 'r+')
+                self.text = self.opd.read()
             self.NotePlace.setPlainText(self.text)
             self.fileSave.setEnabled(True)
             self.opd.close()
@@ -108,7 +110,7 @@ class UnderNote(QMainWindow, MainWind_1):
 
     def saves(self):
         # Сохранение файла
-        self.opd = open(self.fn, 'w+')
+        self.opd = open(self.fn, 'w+', encoding = 'UTF-16')
         self.text = self.NotePlace.toPlainText()
         self.opd.write(self.text)
         self.opd.close()
