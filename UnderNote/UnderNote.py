@@ -9,6 +9,7 @@ from PyQt5.QtGui import QIcon, QPixmap, QSyntaxHighlighter
 from PyQt5.QtCore import QCoreApplication
 from redactor import Ui_MainWindow as MainWind_1
 from infoWind import Ui_MainWindow as MainWind_2
+from win32n64r import crypt
 
 
 windows = []
@@ -30,7 +31,7 @@ class UnderNote(QMainWindow, MainWind_1):
 
     def main(self):
         # Расширения открываемых файлов
-        self.exn = ';;'.join(['UnderTest files (*.tsts)',
+        self.exn = ';;'.join(['UnderTest files (*.UT)',
                               'Text files (*.txt)',
                               'All files (*.*)',
                               'Files without extensions (-*)'])
@@ -84,6 +85,12 @@ class UnderNote(QMainWindow, MainWind_1):
         windows.append(UnderNote())
         windows[-1].show()
 
+    def decode(self):
+        s = self.text
+        if s[-1] == '╫':
+            s = s[:-1]
+        self.text = s[::2] + s[1::2][::-1]
+
     def opens(self):
         # Открытие файла
         fileName = QFD.getOpenFileName(self, "Открыть файл", "", self.exn)[0]
@@ -91,6 +98,8 @@ class UnderNote(QMainWindow, MainWind_1):
             self.fn = fileName
             self.opd = open(fileName, 'r+')
             self.text = self.opd.read()
+            if fileName.split('.')[-1] == 'UT':
+                self.text = crypt(self.text)
             self.NotePlace.setPlainText(self.text)
             self.fileSave.setEnabled(True)
             self.opd.close()
@@ -103,7 +112,7 @@ class UnderNote(QMainWindow, MainWind_1):
         self.text = self.NotePlace.toPlainText()
         self.opd.write(self.text)
         self.opd.close()
-        self.setWindowTitle(self.fn.split('/')[-1])
+        self.setWindowTitle(self.fn.split('/')[-1] + self.wt)
         self.tch = False
 
     def savesAs(self):
@@ -113,12 +122,8 @@ class UnderNote(QMainWindow, MainWind_1):
             if "." not in fileName:
                 fileName += ".txt"
             self.fn = fileName
-            self.opd = open(fileName, 'w+')
-            self.text = self.NotePlace.toPlainText()
-            self.opd.write(self.text)
-            self.opd.close()
-            self.setWindowTitle(self.fn.split('/')[-1] + self.wt)
-            self.tch = False
+            self.fileSave.setEnabled(True)
+            self.saves()
 
     def setFont(self):
         # Выбор шрифта
