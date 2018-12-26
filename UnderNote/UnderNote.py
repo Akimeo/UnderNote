@@ -110,9 +110,12 @@ class UnderNote(QMainWindow, MainWind_1):
 
     def saves(self):
         # Сохранение файла
-        self.opd = open(self.fn, 'w+', encoding = 'UTF-16')
+        if self.fn.split('.')[-1] == 'UT':
+            self.opd = open(self.fn, 'w+', encoding = 'UTF-16')
+        else:
+            self.opd = open(self.fn, 'w+')
         self.text = self.NotePlace.toPlainText()
-        self.opd.write(self.text)
+        self.opd.write(crypt(self.text))
         self.opd.close()
         self.setWindowTitle(self.fn.split('/')[-1] + self.wt)
         self.tch = False
