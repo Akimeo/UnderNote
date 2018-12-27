@@ -1,5 +1,5 @@
 def crypt(s):
-	random_string = "LoremipsumdolorsitametconsecteturadipiscingelitseddoeiusmodtemporincididuntutlaboreetdoloremagnaaliquaUtenimadminimveniamquisnostrudexercitationullamcolaborisnisiutaliquipexeacommodoconsequatDuisauteiruredolorinreprehenderitinvoluptatevelitessecillumdoloreeufugiatnullapariaturExcepteursintoccaecatcupidatatnonproidentsuntinculpaquiofficiadeseruntmollitanimidestlaborum"
+	random_string = ''.join(["1234ABCD" * int((len(s)+5)/5)])
 	random_string_len = len(random_string)
 	tmp = 0
 	xor_string = ""

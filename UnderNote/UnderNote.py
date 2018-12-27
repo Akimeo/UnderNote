@@ -85,12 +85,6 @@ class UnderNote(QMainWindow, MainWind_1):
         windows.append(UnderNote())
         windows[-1].show()
 
-    def decode(self):
-        s = self.text
-        if s[-1] == '╫':
-            s = s[:-1]
-        self.text = s[::2] + s[1::2][::-1]
-
     def opens(self):
         # Открытие файла
         fileName = QFD.getOpenFileName(self, "Открыть файл", "", self.exn)[0]
